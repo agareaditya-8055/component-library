@@ -1,18 +1,17 @@
 import type { Config } from 'tailwindcss';
+import { colors, spacing, fontFamily, fontSize, fontWeight, letterSpacing, radius, shadows } from './packages/tokens/src';
 
 const preset: Config = {
   theme: {
-    extend: {
-      colors: {
-        brand: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8'
-        }
-      }
-    }
+    colors,
+    spacing,
+    fontFamily,
+    fontSize,
+    fontWeight,
+    letterSpacing,
+    borderRadius: radius,
+    boxShadow: shadows,
+    extend: {}
   }
 };
 
