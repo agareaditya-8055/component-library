@@ -52,13 +52,7 @@ export const Loading: Story = {
   }
 };
 
-export const IconOnly: Story = {
-  args: {
-    size: 'icon',
-    'aria-label': 'Open menu',
-    children: '☰'
-  }
-};
+
 
 export const AsChildLink: Story = {
   render: (args) => (
@@ -66,4 +60,26 @@ export const AsChildLink: Story = {
       <a href="https://example.com">Go Home</a>
     </Button>
   )
+};
+
+export const FullWidth: Story = {
+  args: {
+    fullWidth: true,
+    children: 'Full Width'
+  }
+};
+
+export const WithIcon: Story = {
+  args: {
+    icon: '🔥',
+    children: 'With Icon'
+  }
+};
+
+export const IconOnly: Story = {
+  args: {
+    iconOnly: true,
+    icon: '⚙️',
+    'aria-label': 'Settings'
+  }
 };
