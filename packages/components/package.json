@@ -24,18 +24,20 @@
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "clean": "rm -rf dist",
-    "prepublishOnly": "pnpm run build",
-    "prepare": "pnpm run build"
+    "prepublishOnly": "pnpm run build"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "peerDependencies": {
     "react": "^18",
     "react-dom": "^18"
   },
   "dependencies": {
-    "@axiomui/primitives": "^0.1.0",
-    "@axiomui/hooks": "^0.1.0",
-    "@axiomui/utils": "^0.1.0",
-    "@axiomui/tokens": "^0.1.0"
+    "@axiomui/primitives": "workspace:*",
+    "@axiomui/hooks": "workspace:*",
+    "@axiomui/utils": "workspace:*",
+    "@axiomui/tokens": "workspace:*"
   },
   "sideEffects": false
 }

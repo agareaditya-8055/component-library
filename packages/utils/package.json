@@ -24,11 +24,13 @@
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "clean": "rm -rf dist",
-    "prepublishOnly": "pnpm run build",
-    "prepare": "pnpm run build"
+    "prepublishOnly": "pnpm run build"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "sideEffects": false,
   "dependencies": {
-    "@axiomui/primitives": "^0.1.0"
+    "@axiomui/primitives": "workspace:*"
   }
 }
