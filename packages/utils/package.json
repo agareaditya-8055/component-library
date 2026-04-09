@@ -1,6 +1,6 @@
 {
   "name": "@axiomui/utils",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "type": "module",
   "main": "./dist/index.cjs",
@@ -28,6 +28,6 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@axiomui/primitives": "^0.2.0"
+    "@axiomui/primitives": "^0.3.0"
   }
 }

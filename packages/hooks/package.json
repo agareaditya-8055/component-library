@@ -1,6 +1,6 @@
 {
   "name": "@axiomui/hooks",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "type": "module",
   "main": "./dist/index.cjs",
@@ -32,6 +32,6 @@
     "react-dom": "^18"
   },
   "dependencies": {
-    "@axiomui/primitives": "^0.2.0"
+    "@axiomui/primitives": "^0.3.0"
   }
 }

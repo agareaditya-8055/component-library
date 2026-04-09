@@ -1,6 +1,6 @@
 {
   "name": "@axiomui/primitives",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "type": "module",
   "main": "./dist/index.cjs",
@@ -31,7 +31,7 @@
     "react-dom": "^18"
   },
   "dependencies": {
-    "@axiomui/tokens": "^0.2.0"
+    "@axiomui/tokens": "^0.3.0"
   },
   "sideEffects": false
 }
