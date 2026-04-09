@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@axiomui/tokens": [
+        "packages/tokens/src"
+      ],
+      "@axiomui/primitives": [
+        "packages/primitives/src"
+      ],
+      "@axiomui/components": [
+        "packages/components/src"
+      ],
+      "@axiomui/hooks": [
+        "packages/hooks/src"
+      ],
+      "@axiomui/utils": [
+        "packages/utils/src"
+      ]
+    }
+  }
+}
