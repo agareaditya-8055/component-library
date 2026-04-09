@@ -1,4 +1,4 @@
-# Component Library Monorepo
+# AxiomUI Monorepo
 
 ## Folder structure
 

@@ -2,7 +2,11 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "jsx": "react-jsx",
@@ -20,11 +24,21 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@component-library/tokens": ["packages/tokens/src"],
-      "@component-library/primitives": ["packages/primitives/src"],
-      "@component-library/components": ["packages/components/src"],
-      "@component-library/hooks": ["packages/hooks/src"],
-      "@component-library/utils": ["packages/utils/src"]
+      "@axiomui/tokens": [
+        "packages/tokens/src"
+      ],
+      "@axiomui/primitives": [
+        "packages/primitives/src"
+      ],
+      "@axiomui/components": [
+        "packages/components/src"
+      ],
+      "@axiomui/hooks": [
+        "packages/hooks/src"
+      ],
+      "@axiomui/utils": [
+        "packages/utils/src"
+      ]
     }
   }
 }
