@@ -1,101 +1,68 @@
-import {
-  cloneElement,
-  isValidElement,
-  type KeyboardEvent,
-  type JSX,
-  type MouseEvent,
-  type ReactElement
-} from 'react';
+import { cloneElement, isValidElement, type JSX, type ReactElement } from 'react';
 import { Slot } from '@axiomui/primitives';
 import { cn } from '@axiomui/utils';
-import {
-  buttonClassName,
-  buttonContentClassName,
-  buttonContentLoadingClassName,
-  buttonIconClassName,
-  buttonSpinnerClassName
-} from './Button.styles.js';
+import { buttonVariants, contentClass, contentLoading, iconClass, spinnerClass } from './Button.styles.js';
 import type { ButtonProps } from './Button.types.js';
-
-function isTrulyDisabled(disabled: boolean | undefined, loading: boolean): boolean {
-  return Boolean(disabled || loading);
-}
-
-function shouldRenderIcon(icon: ButtonProps['leftIcon'] | ButtonProps['rightIcon'], loading: boolean): boolean {
-  return Boolean(icon && !loading);
-}
+import { useButtonInteraction } from './hooks/useButtonInteraction.js';
 
 export function Button(props: ButtonProps): JSX.Element {
   const {
     variant = 'primary',
     size = 'md',
     loading = false,
-    leftIcon,
-    rightIcon,
+    icon,
+    iconPosition = 'left',
+    iconOnly = false,
+    fullWidth = false,
     asChild = false,
     className,
     children,
-    loadingLabel = 'Loading',
-    ...restProps
+    loadingText = 'Loading',
+    ...rest
   } = props;
 
-  const nativeDisabled = 'disabled' in restProps ? restProps.disabled : false;
-  const isDisabled = isTrulyDisabled(nativeDisabled, loading);
-  const hasOnlyIcon = size === 'icon';
   const Comp = asChild ? Slot : 'button';
 
-  const interactiveProps = asChild
-    ? {
-        'data-disabled': isDisabled ? '' : undefined,
-        'aria-disabled': isDisabled || undefined,
-        onClick: (event: MouseEvent<HTMLElement>) => {
-          if (isDisabled) {
-            event.preventDefault();
-            event.stopPropagation();
-            return;
-          }
-          if (typeof (restProps as { onClick?: (e: MouseEvent<HTMLElement>) => void }).onClick === 'function') {
-            (restProps as { onClick: (e: MouseEvent<HTMLElement>) => void }).onClick(event);
-          }
-        },
-        onKeyDown: (event: KeyboardEvent<HTMLElement>) => {
-          if (!isDisabled) {
-            if (typeof (restProps as { onKeyDown?: (e: KeyboardEvent<HTMLElement>) => void }).onKeyDown === 'function') {
-              (restProps as { onKeyDown: (e: KeyboardEvent<HTMLElement>) => void }).onKeyDown(event);
-            }
-            return;
-          }
-
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-        }
-      }
-    : {
-        disabled: isDisabled,
-        type: (restProps as { type?: 'button' | 'submit' | 'reset' }).type ?? 'button'
-      };
+  const interactionProps = useButtonInteraction({
+    disabled: 'disabled' in rest ? rest.disabled : false,
+    loading,
+    asChild,
+    onClick: (rest as any).onClick,
+    onKeyDown: (rest as any).onKeyDown
+  });
 
   const content = (
     <>
-      <span className={cn(buttonContentClassName, loading && buttonContentLoadingClassName)}>
-        {shouldRenderIcon(leftIcon, loading) ? <span className={buttonIconClassName('left')}>{leftIcon}</span> : null}
-        <span>{children}</span>
-        {shouldRenderIcon(rightIcon, loading) ? <span className={buttonIconClassName('right')}>{rightIcon}</span> : null}
+      <span className={cn(contentClass, loading && contentLoading)}>
+        {!loading && icon && iconPosition === 'left' && <span className={iconClass('left')}>{icon}</span>}
+        {!iconOnly && <span>{children}</span>}
+        {!loading && icon && iconPosition === 'right' && <span className={iconClass('right')}>{icon}</span>}
       </span>
 
-      {loading ? (
-        <span className={buttonSpinnerClassName} aria-hidden="true">
-          <span />
-        </span>
-      ) : null}
-      {loading ? <span className="sr-only">{loadingLabel}</span> : null}
+      {loading && (
+        <>
+          <span className={spinnerClass} aria-hidden="true">
+            <span />
+          </span>
+          <span className="sr-only">{loadingText}</span>
+        </>
+      )}
     </>
   );
 
+  const variantProps = {
+  variant,
+  size,
+  loading,
+  fullWidth,
+  iconOnly,
+  ...(interactionProps.disabled !== undefined && {
+    disabled: interactionProps.disabled
+  })
+};
+
   const sharedProps = {
-    className: cn(buttonClassName({ variant, size, loading, disabled: isDisabled, hasOnlyIcon }), className),
+    className: cn(buttonVariants(variantProps), className),
     'aria-busy': loading || undefined
   };
 
@@ -105,16 +72,16 @@ export function Button(props: ButtonProps): JSX.Element {
     }
 
     return (
-      <Comp {...sharedProps} {...(restProps as Record<string, unknown>)} {...interactiveProps}>
+      <Comp {...sharedProps} {...rest} {...interactionProps}>
         {cloneElement(children as ReactElement, {
           children: content
-        } as { children: JSX.Element })}
+        })}
       </Comp>
     );
   }
 
   return (
-    <Comp {...sharedProps} {...(restProps as Record<string, unknown>)} {...interactiveProps}>
+    <Comp {...sharedProps} {...rest} {...interactionProps}>
       {content}
     </Comp>
   );

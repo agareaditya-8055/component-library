@@ -1,16 +1,18 @@
 import type { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive';
-export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'icon';
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type ButtonOwnProps = {
   variant?: ButtonVariant;
   size?: ButtonSize;
   loading?: boolean;
-  leftIcon?: ReactNode;
-  rightIcon?: ReactNode;
+  icon?: ReactNode;
+  iconPosition?: 'left' | 'right';
+  iconOnly?: boolean;
+  fullWidth?: boolean;
   asChild?: boolean;
-  loadingLabel?: string;
+  loadingText?: string;
   className?: string;
 };
 
