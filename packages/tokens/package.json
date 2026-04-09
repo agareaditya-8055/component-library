@@ -1,6 +1,6 @@
 {
   "name": "@axiomui/tokens",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "type": "module",
   "main": "./dist/index.cjs",
@@ -24,8 +24,7 @@
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "clean": "rm -rf dist",
-    "prepublishOnly": "pnpm run build",
-    "prepare": "pnpm run build"
+    "prepublishOnly": "pnpm run build"
   },
   "sideEffects": false
 }
