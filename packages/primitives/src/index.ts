@@ -1,13 +1,13 @@
-export { Box } from './Box';
-export type { BoxProps } from './Box';
+export { Box } from './Box.js';
+export type { BoxProps } from './Box.js';
 
-export { Flex } from './Flex';
-export type { FlexProps } from './Flex';
+export { Flex } from './Flex.js';
+export type { FlexProps } from './Flex.js';
 
-export { Stack } from './Stack';
-export type { StackProps } from './Stack';
+export { Stack } from './Stack.js';
+export type { StackProps } from './Stack.js';
 
-export { Text } from './Text';
-export type { TextProps } from './Text';
+export { Text } from './Text.js';
+export type { TextProps } from './Text.js';
 
-export type { PolymorphicComponentProps, PrimitiveElement } from './types';
+export type { PolymorphicComponentProps, PrimitiveElement } from './types.js';

@@ -1,6 +1,7 @@
-import type { PrimitiveElement, PolymorphicComponentProps } from './types';
-import { Box } from './Box';
-import { cx } from './cx';
+import type { ReactElement } from 'react';
+import type { BoxProps } from './Box.js';
+import { Box } from './Box.js';
+import { cx } from './cx.js';
 
 type FlexOwnProps = {
   direction?: 'row' | 'row-reverse' | 'col' | 'col-reverse';
@@ -11,7 +12,7 @@ type FlexOwnProps = {
   inline?: boolean;
 };
 
-export type FlexProps<TAs extends PrimitiveElement = 'div'> = PolymorphicComponentProps<TAs, FlexOwnProps>;
+export type FlexProps = Omit<BoxProps<'div'>, 'display'> & FlexOwnProps;
 
 const directionClassNameMap: Record<NonNullable<FlexOwnProps['direction']>, string> = {
   row: 'flex-row',
@@ -53,7 +54,7 @@ const gapClassNameMap: Record<NonNullable<FlexOwnProps['gap']>, string> = {
   8: 'gap-8'
 };
 
-export function Flex<TAs extends PrimitiveElement = 'div'>(props: FlexProps<TAs>): JSX.Element {
+export function Flex(props: FlexProps): ReactElement {
   const { direction = 'row', align, justify, wrap, gap, inline = false, className, ...restProps } = props;
 
   return (

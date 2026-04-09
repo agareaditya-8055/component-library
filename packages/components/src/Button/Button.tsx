@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
-import { buttonClassName, spinnerClassName } from './Button.styles';
-import type { ButtonProps } from './Button.types';
+import { buttonClassName, spinnerClassName } from './Button.styles.js';
+import type { ButtonProps } from './Button.types.js';
 
 export function Button({
   variant = 'primary',

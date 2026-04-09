@@ -1,4 +1,4 @@
-import type { ButtonSize, ButtonVariant } from './Button.types';
+import type { ButtonSize, ButtonVariant } from './Button.types.js';
 
 type ButtonClassOptions = {
   variant: ButtonVariant;

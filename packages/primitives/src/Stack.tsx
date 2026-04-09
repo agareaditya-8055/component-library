@@ -1,6 +1,6 @@
-import type { PrimitiveElement, PolymorphicComponentProps } from './types';
-import { cx } from './cx';
-import { Flex } from './Flex';
+import type { ReactElement } from 'react';
+import type { FlexProps } from './Flex.js';
+import { Flex } from './Flex.js';
 
 type StackOwnProps = {
   direction?: 'vertical' | 'horizontal';
@@ -9,24 +9,23 @@ type StackOwnProps = {
   justify?: 'start' | 'center' | 'end' | 'between';
 };
 
-export type StackProps<TAs extends PrimitiveElement = 'div'> = PolymorphicComponentProps<TAs, StackOwnProps>;
+export type StackProps = Omit<FlexProps, 'direction' | 'gap' | 'align' | 'justify'> & StackOwnProps;
 
 const directionClassNameMap: Record<NonNullable<StackOwnProps['direction']>, 'col' | 'row'> = {
   vertical: 'col',
   horizontal: 'row'
 };
 
-export function Stack<TAs extends PrimitiveElement = 'div'>(props: StackProps<TAs>): JSX.Element {
-  const { direction = 'vertical', gap = '2', align, justify, className, ...restProps } = props;
+export function Stack(props: StackProps): ReactElement {
+  const { direction = 'vertical', gap = '2', align, justify, ...restProps } = props;
 
   return (
     <Flex
       {...restProps}
       direction={directionClassNameMap[direction]}
       gap={gap}
-      align={align}
-      justify={justify}
-      className={cx(className)}
+      {...(align ? { align } : {})}
+      {...(justify ? { justify } : {})}
     />
   );
 }

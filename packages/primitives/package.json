@@ -1,7 +1,7 @@
 {
   "name": "@component-library/primitives",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
+  "private": false,
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -9,7 +9,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     }
   },
   "files": [
@@ -23,12 +24,10 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^18",
+    "react-dom": "^18"
   },
   "dependencies": {
-    "@component-library/hooks": "workspace:*",
-    "@component-library/utils": "workspace:*",
-    "@component-library/tokens": "workspace:*"
+    "@component-library/tokens": "^0.1.0"
   }
 }

@@ -1,5 +1,6 @@
-import type { PrimitiveElement, PolymorphicComponentProps } from './types';
-import { cx } from './cx';
+import type { ReactElement } from 'react';
+import type { PrimitiveElement, PolymorphicComponentProps } from './types.js';
+import { cx } from './cx.js';
 
 type BoxOwnProps = {
   display?: 'block' | 'inline-block' | 'inline' | 'flex' | 'inline-flex' | 'grid' | 'none';
@@ -17,7 +18,7 @@ const displayClassNameMap: Record<NonNullable<BoxOwnProps['display']>, string> =
   none: 'hidden'
 };
 
-export function Box<TAs extends PrimitiveElement = 'div'>(props: BoxProps<TAs>): JSX.Element {
+export function Box<TAs extends PrimitiveElement = 'div'>(props: BoxProps<TAs>): ReactElement {
   const { as, display, className, ...restProps } = props;
   const Comp = (as ?? 'div') as PrimitiveElement;
 

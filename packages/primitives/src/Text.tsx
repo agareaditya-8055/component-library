@@ -1,5 +1,6 @@
-import type { PrimitiveElement, PolymorphicComponentProps } from './types';
-import { cx } from './cx';
+import type { ReactElement } from 'react';
+import type { PrimitiveElement, PolymorphicComponentProps } from './types.js';
+import { cx } from './cx.js';
 
 type TextOwnProps = {
   size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
@@ -42,7 +43,7 @@ const alignClassNameMap: Record<NonNullable<TextOwnProps['align']>, string> = {
   justify: 'text-justify'
 };
 
-export function Text<TAs extends PrimitiveElement = 'span'>(props: TextProps<TAs>): JSX.Element {
+export function Text<TAs extends PrimitiveElement = 'span'>(props: TextProps<TAs>): ReactElement {
   const {
     as,
     size = 'base',
