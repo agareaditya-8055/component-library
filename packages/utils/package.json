@@ -1,6 +1,6 @@
 {
   "name": "@axiomui/utils",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": false,
   "type": "module",
   "main": "./dist/index.cjs",
@@ -26,11 +26,8 @@
     "clean": "rm -rf dist",
     "prepublishOnly": "pnpm run build"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "sideEffects": false,
   "dependencies": {
-    "@axiomui/primitives": "workspace:*"
+    "@axiomui/primitives": "^0.2.0"
   }
 }

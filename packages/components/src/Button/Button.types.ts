@@ -1,7 +1,7 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 
-export type ButtonVariant = 'primary' | 'secondary';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive';
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'icon';
 
 export type ButtonOwnProps = {
   variant?: ButtonVariant;
@@ -9,9 +9,20 @@ export type ButtonOwnProps = {
   loading?: boolean;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+  asChild?: boolean;
+  loadingLabel?: string;
+  className?: string;
 };
 
-export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> &
+type ButtonAsChildProps = ButtonOwnProps & {
+  asChild: true;
+  children: ReactElement;
+};
+
+type ButtonAsNativeProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> &
   ButtonOwnProps & {
+    asChild?: false;
     disabled?: boolean;
   };
+
+export type ButtonProps = ButtonAsChildProps | ButtonAsNativeProps;

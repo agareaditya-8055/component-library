@@ -12,11 +12,11 @@ const meta = {
   argTypes: {
     variant: {
       control: 'inline-radio',
-      options: ['primary', 'secondary']
+      options: ['primary', 'secondary', 'outline', 'ghost', 'destructive']
     },
     size: {
       control: 'inline-radio',
-      options: ['sm', 'md', 'lg']
+      options: ['xs', 'sm', 'md', 'lg', 'xl', 'icon']
     }
   }
 } satisfies Meta<typeof Button>;
@@ -33,6 +33,18 @@ export const Secondary: Story = {
   }
 };
 
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost'
+  }
+};
+
+export const Destructive: Story = {
+  args: {
+    variant: 'destructive'
+  }
+};
+
 export const Loading: Story = {
   args: {
     loading: true,
@@ -40,8 +52,18 @@ export const Loading: Story = {
   }
 };
 
-export const Disabled: Story = {
+export const IconOnly: Story = {
   args: {
-    disabled: true
+    size: 'icon',
+    'aria-label': 'Open menu',
+    children: '☰'
   }
+};
+
+export const AsChildLink: Story = {
+  render: (args) => (
+    <Button {...args} asChild>
+      <a href="https://example.com">Go Home</a>
+    </Button>
+  )
 };

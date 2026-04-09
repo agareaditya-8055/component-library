@@ -1,6 +1,6 @@
 {
   "name": "@axiomui/hooks",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": false,
   "type": "module",
   "main": "./dist/index.cjs",
@@ -26,15 +26,12 @@
     "clean": "rm -rf dist",
     "prepublishOnly": "pnpm run build"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "sideEffects": false,
   "peerDependencies": {
     "react": "^18",
     "react-dom": "^18"
   },
   "dependencies": {
-    "@axiomui/primitives": "workspace:*"
+    "@axiomui/primitives": "^0.2.0"
   }
 }
